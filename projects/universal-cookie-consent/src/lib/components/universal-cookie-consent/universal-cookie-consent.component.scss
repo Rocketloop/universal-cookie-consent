@@ -1,0 +1,53 @@
+.ucc-backdrop {
+    background: var(--ucc-backdrop-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.ucc-modal {
+    background: var(--ucc-modal-background);
+    max-width: var(--ucc-modal-width);
+    width: 100%;
+    min-height: 10rem;
+    padding: 2rem;
+    font-family: var(--ucc-font-family);
+}
+
+.ucc-buttons {
+    display: flex;
+    margin-left: calc(-1 * var(--ucc-button-spacing));
+    margin-right: calc(-1 * var(--ucc-button-spacing));
+
+    .ucc-button {
+        flex-basis: 50%;
+    }
+}
+
+.ucc-button {
+    border: 0;
+    margin: 0 var(--ucc-button-spacing);
+    padding: var(--ucc-button-padding-x) var(--ucc-button-padding-x);
+    background: transparent;
+    font-family: inherit;
+    font-size: var(--ucc-button-font-size);
+    border-radius: var(--ucc-button-radius);
+    font-weight: var(--ucc-button-weight);
+
+    &--primary {
+        background-color: var(--ucc-color-primary);
+        color: var(--ucc-color-primary-contrast);
+    }
+
+    &--secondary {
+        background-color: var(--ucc-color-secondary);
+        color: var(--ucc-color-secondary-contrast);
+    }
+
+}

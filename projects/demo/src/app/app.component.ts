@@ -13,6 +13,10 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit() {
+
+    }
+
+    onButtonClick() {
         this.cookieConsentService.show();
     }
 

@@ -8,9 +8,9 @@ describe('UniversalCookieConsentComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [UniversalCookieConsentComponent]
-        })
-            .compileComponents();
+                   declarations: [UniversalCookieConsentComponent]
+               })
+               .compileComponents();
     }));
 
     beforeEach(() => {

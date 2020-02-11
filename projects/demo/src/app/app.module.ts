@@ -11,15 +11,18 @@ import { UniversalCookieConsentModule } from 'universal-cookie-consent';
     imports: [
         BrowserModule,
         UniversalCookieConsentModule.forRoot({
+            logoUrl: 'assets/logo.png',
             consentTypes: [
                 {
                     id: 'base',
-                    title: 'Base Functionality'
+                    title: 'Base Functionality',
+                    description: 'These cookies are required for the functionality of this website'
                 }
-            ]
+            ],
+            disableBodyScroll: true
         })
     ],
     providers: [],
     bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

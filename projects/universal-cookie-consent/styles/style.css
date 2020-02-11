@@ -1,0 +1,20 @@
+.ucc-default {
+    --ucc-color-primary: rgb(23, 125, 209);
+    --ucc-color-primary-contrast: white;
+    --ucc-color-secondary: rgb(170, 170, 170);
+    --ucc-color-secondary-contrast: black;
+    --ucc-text-color: black;
+    --ucc-text-size: 1rem;
+    --ucc-font-family: inherit;
+    --ucc-backdrop-color: rgba(0, 0, 0, 0.6);
+    --ucc-modal-background: white;
+    --ucc-modal-width: 32rem;
+    --ucc-modal-border-radius: 0;
+    --ucc-modal-padding: 1rem;
+    --ucc-button-radius: 0;
+    --ucc-button-padding-x: 1rem;
+    --ucc-button-padding-y: 0.5rem;
+    --ucc-button-spacing: 0.5rem;
+    --ucc-button-font-size: 1rem;
+    --ucc-button-weight: 500;
+}

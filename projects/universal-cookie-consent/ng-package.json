@@ -3,5 +3,11 @@
     "dest": "../../dist/universal-cookie-consent",
     "lib": {
         "entryFile": "src/public-api.ts"
-    }
+    },
+    "assets": [
+        "./styles/*"
+    ],
+    "whitelistedNonPeerDependencies": [
+        "js-cookie"
+    ]
 }
