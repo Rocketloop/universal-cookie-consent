@@ -1,0 +1,48 @@
+:host {
+    position: relative;
+    display: inline-block;
+    width: var(--ucc-switch-width);
+    height: var(--ucc-switch-height);
+    color: var(--ucc-color-primary);
+
+    input {
+        display:none;
+
+        &:checked + span {
+            background-color: currentColor;
+
+            &:before {
+                left: calc(var(--ucc-switch-width) - var(--ucc-switch-toggle-size) - ((var(--ucc-switch-height) - var(--ucc-switch-toggle-size)) / 2));
+            }
+        }
+
+        &:disabled + span {
+            opacity: 0.5;
+        }
+    }
+
+    span {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: var(--ucc-switch-background);
+        transition: 300ms;
+        border-radius: var(--ucc-switch-radius);
+
+        &:before {
+            content: '';
+            position: absolute;
+            width: var(--ucc-switch-toggle-size);
+            height: var(--ucc-switch-toggle-size);
+            left: calc((var(--ucc-switch-height) - var(--ucc-switch-toggle-size)) / 2);
+            top: calc((var(--ucc-switch-height) - var(--ucc-switch-toggle-size)) / 2);
+            background-color: white;
+            transition: 300ms;
+            border-radius: var(--ucc-switch-toggle-radius);
+        }
+    }
+
+}

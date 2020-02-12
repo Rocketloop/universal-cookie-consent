@@ -15,7 +15,7 @@ export function writeCookie<T>(key: string, value: T) {
  * Read the value of the cookie with the given key
  * @param key
  */
-export function readCookie<T>(key): T {
+export function readCookie<T>(key): T | null {
     const value = Cookies.get(`${UNIVERSAL_COOKIE_CONSENT_NAMESPACE}_${key}`);
     if (value) {
         try {

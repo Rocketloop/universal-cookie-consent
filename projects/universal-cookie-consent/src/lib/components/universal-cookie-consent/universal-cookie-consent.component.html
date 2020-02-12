@@ -12,7 +12,7 @@
     <ng-template #simple>
         <img class="ucc-logo" *ngIf="options.logoUrl" [src]="options.logoUrl"/>
 
-        <p>{{ options.introText }}</p>
+        <p class="ucc-intro" [innerHTML]="options.introText"></p>
 
         <div class="ucc-buttons">
             <button class="ucc-button ucc-button--secondary" type="button"
@@ -22,6 +22,17 @@
     </ng-template>
 
     <ng-template #advanced>
+        <h1 class="ucc-heading">{{ options.customizeHeadingText }}</h1>
+        <p class="ucc-intro">{{ options.customizeIntroText }}</p>
+        <form class="ucc-consent-types" [formGroup]="customizeFormGroup">
+            <div class="ucc-consent-type" *ngFor="let consentType of options.consentTypes">
+                <ui-switch class="ucc-consent-type__control" [formControlName]="consentType.id" [style.color]="consentType.color"></ui-switch>
+                <div class="ucc-consent-type__content">
+                    <h2 class="ucc-consent-type__title">{{ consentType.title }}</h2>
+                    <p class="ucc-consent-type__description">{{ consentType.description }}</p>
+                </div>
+            </div>
+        </form>
         <div class="ucc-buttons">
             <button class="ucc-button ucc-button--secondary" type="button"
                     (click)="onBackClicked()">{{ options.backText }}</button>

@@ -16,8 +16,25 @@
     max-width: var(--ucc-modal-width);
     width: 100%;
     min-height: 10rem;
-    padding: 2rem;
+    padding: var(--ucc-modal-padding);
     font-family: var(--ucc-font-family);
+}
+
+.ucc-heading {
+    margin: 0 0 2rem;
+    font-size: var(--ucc-heading-size);
+    font-weight: var(--ucc-heading-weight);
+}
+
+.ucc-logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 4rem;
+}
+
+.ucc-intro {
+    margin-bottom: 4rem;
 }
 
 .ucc-buttons {
@@ -50,4 +67,33 @@
         color: var(--ucc-color-secondary-contrast);
     }
 
+}
+
+.ucc-consent-types {
+    margin-bottom: 4rem;
+}
+
+.ucc-consent-type {
+    display: flex;
+    margin-bottom: 1rem;
+
+    &__control {
+        margin-right: 1rem;
+    }
+
+    &__content {
+        flex: 1;
+    }
+
+    &__title {
+        margin: 0 0 0.25rem;
+        font-size: var(--ucc-consent-type-title-size);
+        font-weight: var(--ucc-consent-type-title-weight);
+    }
+
+    &__description {
+        margin: 0;
+        font-size: var(--ucc-consent-type-description-size);
+        color: var(--ucc-consent-type-description-color);
+    }
 }

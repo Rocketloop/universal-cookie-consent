@@ -4,7 +4,6 @@ import { UniversalCookieConsentViewState } from '../models/universal-cookie-cons
 import { UNIVERSAL_COOKIE_CONSENT_OPTIONS, UniversalCookieConsentOptions } from '../models/universal-cookie-consent-options.model';
 import { DOCUMENT } from '@angular/common';
 import { clearCookie, readCookie, writeCookie } from '../helpers/cookie.helper';
-import { skip } from 'rxjs/operators';
 
 const UNIVERSAL_COOKIE_CONSENT_CONSENTS_KEY = 'consents';
 
@@ -12,12 +11,21 @@ const UNIVERSAL_COOKIE_CONSENT_CONSENTS_KEY = 'consents';
 @Injectable()
 export class UniversalCookieConsentService {
 
+    /**
+     * The current view state
+     */
     viewState$: BehaviorSubject<UniversalCookieConsentViewState> = new BehaviorSubject(
         UniversalCookieConsentViewState.CLOSED);
 
+    /**
+     * The current options
+     */
     options$: BehaviorSubject<UniversalCookieConsentOptions> = new BehaviorSubject(null);
 
-    grantedConsents$: BehaviorSubject<string[]> = new BehaviorSubject(null);
+    /**
+     * The currently granted consents
+     */
+    grantedConsents$: BehaviorSubject<string[] | null> = new BehaviorSubject(null);
 
     protected originalBodyOverflow: string;
 
@@ -37,6 +45,11 @@ export class UniversalCookieConsentService {
         this.grantedConsents$.next(grantedConsents);
 
         this.grantedConsents$.subscribe((consents) => this.onConsentsUpdated(consents));
+
+        combineLatest([this.viewState$, this.options$, this.grantedConsents$]).subscribe(([viewState, options, consents]) => {
+            this.handleAutoShow(viewState, options, consents);
+        });
+
     }
 
     getGrantedConsents(): Observable<string[]> {
@@ -44,7 +57,6 @@ export class UniversalCookieConsentService {
     }
 
     setGrantedConsents(consents: string[]) {
-        console.log(consents);
         this.grantedConsents$.next(consents);
     }
 
@@ -62,10 +74,18 @@ export class UniversalCookieConsentService {
         return this.options$.asObservable();
     }
 
+    /**
+     * Set the current view state
+     * @param viewState
+     */
     setViewState(viewState: UniversalCookieConsentViewState) {
         this.viewState$.next(viewState);
     }
 
+    /**
+     * Set the cookie consent options
+     * @param options
+     */
     setOptions(options: UniversalCookieConsentOptions) {
         const defaultOptions = this.defaultOptions || {};
         this.options$.next({
@@ -94,9 +114,12 @@ export class UniversalCookieConsentService {
             showAdvanced ? UniversalCookieConsentViewState.ADVANCED : UniversalCookieConsentViewState.SIMPLE);
     }
 
-    protected onConsentsUpdated(consents: string[]) {
-        console.log('update', consents);
-        if (consents) {
+    /**
+     * Called when the granted consents have changed
+     * @param consents
+     */
+    protected onConsentsUpdated(consents: string[] | null) {
+        if (consents !== null) {
             writeCookie(UNIVERSAL_COOKIE_CONSENT_CONSENTS_KEY, consents);
         } else {
             clearCookie(UNIVERSAL_COOKIE_CONSENT_CONSENTS_KEY);
@@ -114,6 +137,19 @@ export class UniversalCookieConsentService {
             this.renderer.setStyle(this.document.body, 'overflow', 'hidden');
         } else {
             this.renderer.setStyle(this.document.body, 'overflow', this.originalBodyOverflow);
+        }
+    }
+
+    /**
+     * Automatically show the consent modal if the autoShow options is set and the autoShow conditions are met
+     * @param viewState
+     * @param options
+     * @param consents
+     */
+    protected handleAutoShow(viewState: UniversalCookieConsentViewState, options: UniversalCookieConsentOptions,
+                             consents: string[] | null) {
+        if (options.autoShow && viewState === UniversalCookieConsentViewState.CLOSED && consents === null) {
+            this.show();
         }
     }
 }

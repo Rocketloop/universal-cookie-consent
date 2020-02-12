@@ -10,6 +10,8 @@ import {
     UniversalCookieConsentContainerComponent
 } from './components/universal-cookie-consent-container/universal-cookie-consent-container.component';
 import { CommonModule } from '@angular/common';
+import { UiSwitchComponent } from './components/ui-switch/ui-switch.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 export const DEFAULT_MODULE_PROVIDERS = [
     UniversalCookieConsentService
@@ -24,9 +26,10 @@ export const UNIVERSAL_COOKIE_CONSENT_OPTION_DEFAULTS: Partial<UniversalCookieCo
 };
 
 @NgModule({
-    declarations: [UniversalCookieConsentComponent, UniversalCookieConsentContainerComponent],
+    declarations: [UniversalCookieConsentComponent, UniversalCookieConsentContainerComponent, UiSwitchComponent],
     imports: [
-        CommonModule
+        CommonModule,
+        ReactiveFormsModule
     ],
     exports: [UniversalCookieConsentComponent, UniversalCookieConsentContainerComponent],
     providers: DEFAULT_MODULE_PROVIDERS

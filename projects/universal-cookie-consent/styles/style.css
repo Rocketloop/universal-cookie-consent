@@ -1,20 +1,37 @@
 .ucc-default {
-    --ucc-color-primary: rgb(23, 125, 209);
+    --ucc-color-primary: #177DD1;
     --ucc-color-primary-contrast: white;
-    --ucc-color-secondary: rgb(170, 170, 170);
+    --ucc-color-secondary: #AAAAAA;
     --ucc-color-secondary-contrast: black;
     --ucc-text-color: black;
     --ucc-text-size: 1rem;
     --ucc-font-family: inherit;
     --ucc-backdrop-color: rgba(0, 0, 0, 0.6);
+
     --ucc-modal-background: white;
-    --ucc-modal-width: 32rem;
+    --ucc-modal-width: 24rem;
+    --ucc-modal-padding: 4rem;
     --ucc-modal-border-radius: 0;
-    --ucc-modal-padding: 1rem;
+
+    --ucc-heading-size: 2rem;
+    --ucc-heading-weight: 500;
+
     --ucc-button-radius: 0;
     --ucc-button-padding-x: 1rem;
     --ucc-button-padding-y: 0.5rem;
     --ucc-button-spacing: 0.5rem;
     --ucc-button-font-size: 1rem;
     --ucc-button-weight: 500;
+
+    --ucc-switch-height: 2rem;
+    --ucc-switch-width: 4rem;
+    --ucc-switch-radius: 1rem;
+    --ucc-switch-toggle-size: 1.5rem;
+    --ucc-switch-toggle-radius: 100%;
+    --ucc-switch-background: #BBBBBB;
+
+    --ucc-consent-type-title-size: 1.125rem;
+    --ucc-consent-type-title-weight: 500;
+    --ucc-consent-type-description-size: 0.875rem;
+    --ucc-consent-type-description-color: rgba(0,0,0,0.8);
 }

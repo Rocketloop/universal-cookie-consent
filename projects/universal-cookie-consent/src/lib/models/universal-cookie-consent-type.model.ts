@@ -11,4 +11,6 @@ export interface UniversalCookieConsentType {
 
     mandatory?: boolean;
 
+    color?: string;
+
 }

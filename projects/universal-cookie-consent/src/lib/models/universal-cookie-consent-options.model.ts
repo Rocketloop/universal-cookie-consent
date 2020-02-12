@@ -10,10 +10,18 @@ export const UNIVERSAL_COOKIE_CONSENT_OPTIONS = new InjectionToken<UniversalCook
 export interface UniversalCookieConsentOptions {
 
     /**
+     * Flag whether to show the cookie consent on the first visit automatically
+     */
+    autoShow?: boolean;
+
+    /**
      * Url for the logo displayed in the cookie consent modal
      */
     logoUrl?: string;
 
+    /**
+     * The available consent types
+     */
     consentTypes: UniversalCookieConsentType[];
 
     /**

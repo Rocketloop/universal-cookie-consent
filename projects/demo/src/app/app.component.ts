@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UniversalCookieConsentService } from 'universal-cookie-consent';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'app-root',
@@ -8,8 +9,10 @@ import { UniversalCookieConsentService } from 'universal-cookie-consent';
 })
 export class AppComponent implements OnInit {
 
-    constructor(private cookieConsentService: UniversalCookieConsentService) {
+    consents$: Observable<string[]>;
 
+    constructor(private cookieConsentService: UniversalCookieConsentService) {
+        this.consents$ = this.cookieConsentService.getGrantedConsents();
     }
 
     ngOnInit() {
@@ -17,7 +20,7 @@ export class AppComponent implements OnInit {
     }
 
     onButtonClick() {
-        this.cookieConsentService.show();
+        this.cookieConsentService.show(true);
     }
 
 }

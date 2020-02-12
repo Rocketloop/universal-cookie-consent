@@ -1,3 +1,8 @@
-<button type="button" (click)="onButtonClick()">Open Cookie Consent</button>
+<button type="button" (click)="onButtonClick()">Change Cookie Consent Settings</button>
+
+<h1>The following consent types have been granted:</h1>
+<ul *ngIf="consents$ | async as consents">
+    <li *ngFor="let consent of consents">{{ consent }}</li>
+</ul>
 
 <universal-cookie-consent></universal-cookie-consent>
