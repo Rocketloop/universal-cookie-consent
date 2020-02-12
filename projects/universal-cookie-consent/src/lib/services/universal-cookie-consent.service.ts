@@ -86,8 +86,10 @@ export class UniversalCookieConsentService {
      * Set the cookie consent options
      * @param options
      */
-    setOptions(options: UniversalCookieConsentOptions) {
-        const defaultOptions = this.defaultOptions || {};
+    setOptions(options: Partial<UniversalCookieConsentOptions>) {
+        const defaultOptions = this.defaultOptions || {
+            consentTypes: []
+        };
         this.options$.next({
             ...defaultOptions,
             ...options

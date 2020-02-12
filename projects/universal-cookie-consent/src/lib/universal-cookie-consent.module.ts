@@ -36,7 +36,7 @@ export const UNIVERSAL_COOKIE_CONSENT_OPTION_DEFAULTS: Partial<UniversalCookieCo
 })
 export class UniversalCookieConsentModule {
 
-    static forRoot(options: UniversalCookieConsentOptions): ModuleWithProviders {
+    static forRoot(options: UniversalCookieConsentOptions): ModuleWithProviders<UniversalCookieConsentModule> {
         return {
             ngModule: UniversalCookieConsentModule,
             providers: [
