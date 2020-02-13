@@ -1,9 +1,6 @@
-import { Component, OnInit, Inject, Input, OnChanges, SimpleChanges, EventEmitter, Output, OnDestroy } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { UniversalCookieConsentService } from '../../services/universal-cookie-consent.service';
-import { Observable, Subscription } from 'rxjs';
-import { shareReplay } from 'rxjs/operators';
-
-import { UniversalCookieConsentOptions } from '../../models/universal-cookie-consent-options.model';
+import { Subscription } from 'rxjs';
 import { UniversalCookieConsentViewState } from '../../models/universal-cookie-consent-view-state.model';
 import { UniversalCookieConsentType } from '../../models/universal-cookie-consent-type.model';
 

@@ -1,4 +1,4 @@
-import { Component, ElementRef, forwardRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, forwardRef, Renderer2, ViewChild } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 export const UI_SWITCH_VALUE_ACCESSOR: any = {

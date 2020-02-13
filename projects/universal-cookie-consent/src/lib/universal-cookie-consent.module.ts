@@ -1,14 +1,8 @@
-import { NgModule, InjectionToken } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { UniversalCookieConsentComponent } from './components/universal-cookie-consent/universal-cookie-consent.component';
-import {
-    UniversalCookieConsentOptions,
-    UNIVERSAL_COOKIE_CONSENT_OPTIONS
-} from './models/universal-cookie-consent-options.model';
-import { ModuleWithProviders } from '@angular/core';
+import { UNIVERSAL_COOKIE_CONSENT_OPTIONS, UniversalCookieConsentOptions } from './models/universal-cookie-consent-options.model';
 import { UniversalCookieConsentService } from './services/universal-cookie-consent.service';
-import {
-    UniversalCookieConsentContainerComponent
-} from './components/universal-cookie-consent-container/universal-cookie-consent-container.component';
+import { UniversalCookieConsentContainerComponent } from './components/universal-cookie-consent-container/universal-cookie-consent-container.component';
 import { CommonModule } from '@angular/common';
 import { UiSwitchComponent } from './components/ui-switch/ui-switch.component';
 import { ReactiveFormsModule } from '@angular/forms';
