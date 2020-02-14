@@ -3,12 +3,9 @@
     "version": "1.0.4",
     "description": "A Cookie Consent Library for Angular and the web",
     "scripts": {
-        "ng": "ng",
-        "start": "ng serve",
-        "build": "ng build",
-        "test": "ng test",
-        "lint": "ng lint",
-        "e2e": "ng e2e"
+        "demo:serve": "ng serve",
+        "lib:build": "ng build --prod universal-cookie-consent && npm run lib:copy-files",
+        "lib:copy-files": "cp -t dist/universal-cookie-consent README.md LICENSE"
     },
     "private": true,
     "dependencies": {
