@@ -1,6 +1,6 @@
 {
     "name": "universal-cookie-consent-base",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "A Cookie Consent Library for Angular and the web",
     "scripts": {
         "ng": "ng",
