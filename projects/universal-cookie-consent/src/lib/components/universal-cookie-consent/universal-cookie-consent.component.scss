@@ -9,6 +9,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    z-index: var(--ucc-z-index, 99999);
 }
 
 .ucc-modal {
