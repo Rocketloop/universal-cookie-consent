@@ -14,20 +14,20 @@ export class UniversalCookieConsentService {
     /**
      * The current view state
      */
-    viewState$: BehaviorSubject<UniversalCookieConsentViewState> = new BehaviorSubject(
+    private viewState$: BehaviorSubject<UniversalCookieConsentViewState> = new BehaviorSubject(
         UniversalCookieConsentViewState.CLOSED);
 
     /**
      * The current options
      */
-    options$: BehaviorSubject<UniversalCookieConsentOptions> = new BehaviorSubject(null);
+    private options$: BehaviorSubject<UniversalCookieConsentOptions> = new BehaviorSubject(null);
 
     /**
      * The currently granted consents
      */
-    grantedConsents$: BehaviorSubject<string[] | null> = new BehaviorSubject(null);
+    private grantedConsents$: BehaviorSubject<string[] | null> = new BehaviorSubject(null);
 
-    protected originalBodyOverflow: string;
+    private originalBodyOverflow: string;
 
     private renderer: Renderer2;
 
