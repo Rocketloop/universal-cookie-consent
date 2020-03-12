@@ -1,7 +1,7 @@
 {
     "name": "universal-cookie-consent",
     "description": "A Cookie Consent Library for Angular and the web",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "peerDependencies": {
         "@angular/common": "^8.2.14",
         "@angular/core": "^8.2.14"
