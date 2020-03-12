@@ -27,8 +27,6 @@ export class UniversalCookieConsentService {
      */
     private grantedConsents$: BehaviorSubject<string[] | null> = new BehaviorSubject(null);
 
-    private originalBodyOverflow: string;
-
     private renderer: Renderer2;
 
     constructor(@Optional() @Inject(UNIVERSAL_COOKIE_CONSENT_OPTIONS) private defaultOptions: UniversalCookieConsentOptions,
@@ -135,10 +133,9 @@ export class UniversalCookieConsentService {
         const body = this.document.body;
         if (options.disableBodyScroll &&
             (viewState === UniversalCookieConsentViewState.SIMPLE || viewState === UniversalCookieConsentViewState.ADVANCED)) {
-            this.originalBodyOverflow = body.style.overflow;
             this.renderer.setStyle(this.document.body, 'overflow', 'hidden');
         } else {
-            this.renderer.setStyle(this.document.body, 'overflow', this.originalBodyOverflow);
+            this.renderer.removeStyle(this.document.body, 'overflow');
         }
     }
 
