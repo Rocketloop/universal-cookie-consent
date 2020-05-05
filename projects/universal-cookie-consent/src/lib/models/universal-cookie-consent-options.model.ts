@@ -43,4 +43,8 @@ export interface UniversalCookieConsentOptions {
 
     saveText?: string;
 
+    cookieSettings?: {
+        expires: string;
+    };
+
 }

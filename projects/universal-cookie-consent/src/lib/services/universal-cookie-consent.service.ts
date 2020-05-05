@@ -120,7 +120,8 @@ export class UniversalCookieConsentService {
      */
     protected onConsentsUpdated(consents: string[] | null) {
         if (consents !== null) {
-            writeCookie(UNIVERSAL_COOKIE_CONSENT_CONSENTS_KEY, consents);
+            const cookieSettings = this.options$.value.cookieSettings;
+            writeCookie(UNIVERSAL_COOKIE_CONSENT_CONSENTS_KEY, consents, cookieSettings);
         } else {
             clearCookie(UNIVERSAL_COOKIE_CONSENT_CONSENTS_KEY);
         }

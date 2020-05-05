@@ -6,9 +6,14 @@ export const UNIVERSAL_COOKIE_CONSENT_NAMESPACE = 'ucc';
  * Write a new key value pair to the cookies
  * @param key
  * @param value
+ * @param options
  */
-export function writeCookie<T>(key: string, value: T) {
-    Cookies.set(`${UNIVERSAL_COOKIE_CONSENT_NAMESPACE}_${key}`, JSON.stringify(value));
+export function writeCookie<T>(key: string, value: T, options?: any) {
+    if (options) {
+        Cookies.set(`${UNIVERSAL_COOKIE_CONSENT_NAMESPACE}_${key}`, JSON.stringify(value), options);
+    } else {
+        Cookies.set(`${UNIVERSAL_COOKIE_CONSENT_NAMESPACE}_${key}`, JSON.stringify(value));
+    }
 }
 
 /**
