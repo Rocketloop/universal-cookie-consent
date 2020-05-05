@@ -61,12 +61,14 @@ Support for Universal Cookie Consent is currently a work in progress and will be
 
 Universal Cookie Consent is sponsored by [@Rocketloop][1]. 
 
-### Authors
+### Contributors
 
 * [Florian Reifschneider (@flore2003)][2]
+* [Alex Augustin (@erzaehlsalex)][3]
 
 ## License
 MIT
 
 [1]: https://rocketloop.de/en
 [2]: https://github.com/flore2003
+[3]: https://github.com/erzaehlsalex
