@@ -29,10 +29,13 @@ import { UniversalCookieConsentModule } from 'universal-cookie-consent';
             ],
             disableBodyScroll: true,
             introText: 'We use cookies in order to improve our website continuously. By confirming the button "Accept" you agree to the use of cookies. By clicking the "Customize" button, you can select which cookies you wish to accept. For further information, please refer to our privacy policy.',
-            customizeIntroText: 'Use the following settings to personalize which cookies you want to allow.'
+            customizeIntroText: 'Use the following settings to personalize which cookies you want to allow.',
+            cookieSettings: {
+                expires: 365
+            }
         })
     ],
     providers: [],
     bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

@@ -44,7 +44,11 @@ export interface UniversalCookieConsentOptions {
     saveText?: string;
 
     cookieSettings?: {
-        expires: string;
+
+        /**
+         * If number, days until the ucc cookie expires, if Date, date at which the ucc cookie expires
+         */
+        expires?: number | Date;
     };
 
 }
