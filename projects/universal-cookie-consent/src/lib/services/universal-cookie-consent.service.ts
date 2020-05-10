@@ -122,7 +122,6 @@ export class UniversalCookieConsentService {
     protected onConsentsUpdated(consents: string[] | null) {
         if (consents !== null) {
             const cookieSettings = this.options$.value.cookieSettings;
-            console.log("COOKIE SETTINGS", cookieSettings);
             writeCookie(UNIVERSAL_COOKIE_CONSENT_CONSENTS_KEY, consents, cookieSettings);
         } else {
             clearCookie(UNIVERSAL_COOKIE_CONSENT_CONSENTS_KEY);
