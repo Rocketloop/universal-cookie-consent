@@ -4,6 +4,7 @@ import { UniversalCookieConsentViewState } from '../models/universal-cookie-cons
 import { UNIVERSAL_COOKIE_CONSENT_OPTIONS, UniversalCookieConsentOptions } from '../models/universal-cookie-consent-options.model';
 import { DOCUMENT } from '@angular/common';
 import { clearCookie, readCookie, writeCookie } from '../helpers/cookie.helper';
+import { skip } from 'rxjs/operators';
 
 const UNIVERSAL_COOKIE_CONSENT_CONSENTS_KEY = 'consents';
 
@@ -42,7 +43,7 @@ export class UniversalCookieConsentService {
         const grantedConsents = readCookie<string[]>(UNIVERSAL_COOKIE_CONSENT_CONSENTS_KEY);
         this.grantedConsents$.next(grantedConsents);
 
-        this.grantedConsents$.subscribe((consents) => this.onConsentsUpdated(consents));
+        this.grantedConsents$.pipe(skip(1)).subscribe((consents) => this.onConsentsUpdated(consents));
 
         combineLatest([this.viewState$, this.options$, this.grantedConsents$]).subscribe(([viewState, options, consents]) => {
             this.handleAutoShow(viewState, options, consents);
@@ -121,6 +122,7 @@ export class UniversalCookieConsentService {
     protected onConsentsUpdated(consents: string[] | null) {
         if (consents !== null) {
             const cookieSettings = this.options$.value.cookieSettings;
+            console.log("COOKIE SETTINGS", cookieSettings);
             writeCookie(UNIVERSAL_COOKIE_CONSENT_CONSENTS_KEY, consents, cookieSettings);
         } else {
             clearCookie(UNIVERSAL_COOKIE_CONSENT_CONSENTS_KEY);
