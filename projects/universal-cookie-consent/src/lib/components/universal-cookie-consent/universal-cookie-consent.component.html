@@ -29,7 +29,7 @@
                 <ui-switch class="ucc-consent-type__control" [formControlName]="consentType.id" [style.color]="consentType.color"></ui-switch>
                 <div class="ucc-consent-type__content">
                     <h2 class="ucc-consent-type__title">{{ consentType.title }}</h2>
-                    <p class="ucc-consent-type__description">{{ consentType.description }}</p>
+                    <p class="ucc-consent-type__description" [innerHTML]="consentType.description"></p>
                 </div>
             </div>
         </form>
