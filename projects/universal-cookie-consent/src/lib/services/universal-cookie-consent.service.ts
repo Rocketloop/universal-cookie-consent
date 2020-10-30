@@ -41,17 +41,16 @@ export class UniversalCookieConsentService {
             combineLatest(this.viewState$, this.options$).subscribe(([viewState, options]) => {
                 this.updateBodyScroll(viewState, options);
             });
+
+            const grantedConsents = readCookie<string[]>(UNIVERSAL_COOKIE_CONSENT_CONSENTS_KEY);
+            this.grantedConsents$.next(grantedConsents);
+
+            this.grantedConsents$.pipe(skip(1)).subscribe((consents) => this.onConsentsUpdated(consents));
+
+            combineLatest([this.viewState$, this.options$, this.grantedConsents$]).subscribe(([viewState, options, consents]) => {
+                this.handleAutoShow(viewState, options, consents);
+            });
         }
-
-        const grantedConsents = readCookie<string[]>(UNIVERSAL_COOKIE_CONSENT_CONSENTS_KEY);
-        this.grantedConsents$.next(grantedConsents);
-
-        this.grantedConsents$.pipe(skip(1)).subscribe((consents) => this.onConsentsUpdated(consents));
-
-        combineLatest([this.viewState$, this.options$, this.grantedConsents$]).subscribe(([viewState, options, consents]) => {
-            this.handleAutoShow(viewState, options, consents);
-        });
-
     }
 
     getGrantedConsents(): Observable<string[]> {
