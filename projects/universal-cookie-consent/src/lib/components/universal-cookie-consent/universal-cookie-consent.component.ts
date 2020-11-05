@@ -116,7 +116,7 @@ export class UniversalCookieConsentComponent implements OnInit, OnDestroy {
      * @param options
      */
     protected updateCustomizeForm(grantedConsents: string[], options: UniversalCookieConsentOptions) {
-        const controls = options.consentTypes.reduce((types, type) => {
+        const controls = options.consentTypes ? options.consentTypes.reduce((types, type) => {
             return {
                 ...types,
                 [type.id]: [
@@ -126,7 +126,7 @@ export class UniversalCookieConsentComponent implements OnInit, OnDestroy {
                     }
                 ]
             };
-        }, {});
+        }, {}) : {};
         this.customizeFormGroup = this.fb.group(controls);
     }
 

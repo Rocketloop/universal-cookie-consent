@@ -1,8 +1,8 @@
-import { Inject, Injectable, Optional, Renderer2, RendererFactory2 } from '@angular/core';
+import { Inject, Injectable, Optional, PLATFORM_ID, Renderer2, RendererFactory2 } from '@angular/core';
 import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 import { UniversalCookieConsentViewState } from '../models/universal-cookie-consent-view-state.model';
 import { UNIVERSAL_COOKIE_CONSENT_OPTIONS, UniversalCookieConsentOptions } from '../models/universal-cookie-consent-options.model';
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { clearCookie, readCookie, writeCookie } from '../helpers/cookie.helper';
 import { skip } from 'rxjs/operators';
 
@@ -31,24 +31,26 @@ export class UniversalCookieConsentService {
     private renderer: Renderer2;
 
     constructor(@Optional() @Inject(UNIVERSAL_COOKIE_CONSENT_OPTIONS) private defaultOptions: UniversalCookieConsentOptions,
-                @Inject(DOCUMENT) private document: Document,
+                @Inject(DOCUMENT) private document: any,
+                @Inject(PLATFORM_ID) private platformId: Object,
                 rendererFactory: RendererFactory2) {
         this.renderer = rendererFactory.createRenderer(null, null);
         this.options$.next(defaultOptions);
 
-        combineLatest(this.viewState$, this.options$).subscribe(([viewState, options]) => {
-            this.updateBodyScroll(viewState, options);
-        });
+        if ( isPlatformBrowser(platformId) ) {
+            combineLatest(this.viewState$, this.options$).subscribe(([viewState, options]) => {
+                this.updateBodyScroll(viewState, options);
+            });
 
-        const grantedConsents = readCookie<string[]>(UNIVERSAL_COOKIE_CONSENT_CONSENTS_KEY);
-        this.grantedConsents$.next(grantedConsents);
+            const grantedConsents = readCookie<string[]>(UNIVERSAL_COOKIE_CONSENT_CONSENTS_KEY);
+            this.grantedConsents$.next(grantedConsents);
 
-        this.grantedConsents$.pipe(skip(1)).subscribe((consents) => this.onConsentsUpdated(consents));
+            this.grantedConsents$.pipe(skip(1)).subscribe((consents) => this.onConsentsUpdated(consents));
 
-        combineLatest([this.viewState$, this.options$, this.grantedConsents$]).subscribe(([viewState, options, consents]) => {
-            this.handleAutoShow(viewState, options, consents);
-        });
-
+            combineLatest([this.viewState$, this.options$, this.grantedConsents$]).subscribe(([viewState, options, consents]) => {
+                this.handleAutoShow(viewState, options, consents);
+            });
+        }
     }
 
     getGrantedConsents(): Observable<string[]> {
