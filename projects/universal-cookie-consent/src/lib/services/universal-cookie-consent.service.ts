@@ -9,7 +9,9 @@ import { skip } from 'rxjs/operators';
 const UNIVERSAL_COOKIE_CONSENT_CONSENTS_KEY = 'consents';
 
 /** @dynamic */
-@Injectable()
+@Injectable({
+        providedIn: 'root'
+})
 export class UniversalCookieConsentService {
 
     /**
@@ -35,7 +37,7 @@ export class UniversalCookieConsentService {
                 @Inject(PLATFORM_ID) private platformId: Object,
                 rendererFactory: RendererFactory2) {
         this.renderer = rendererFactory.createRenderer(null, null);
-        this.options$.next(defaultOptions);
+        this.options$.next(defaultOptions || { consentTypes: []});
 
         if ( isPlatformBrowser(platformId) ) {
             combineLatest(this.viewState$, this.options$).subscribe(([viewState, options]) => {
@@ -88,6 +90,7 @@ export class UniversalCookieConsentService {
      * @param options
      */
     setOptions(options: Partial<UniversalCookieConsentOptions>) {
+        console.log('setOptions', options);
         const defaultOptions = this.defaultOptions || {
             consentTypes: []
         };

@@ -12,7 +12,7 @@ export class UniversalCookieConsentContainerComponent implements OnInit, OnChang
 
     @Input() viewState: UniversalCookieConsentViewState = UniversalCookieConsentViewState.CLOSED;
 
-    @Input() consentTypes: UniversalCookieConsentType[];
+    @Input() consentTypes: UniversalCookieConsentType[] = [];
 
     @Input() logoUrl: string;
 
@@ -37,11 +37,12 @@ export class UniversalCookieConsentContainerComponent implements OnInit, OnChang
     subscription: Subscription;
 
     constructor(protected service: UniversalCookieConsentService) {
-
+        console.log('UniversalCookieConsentContainerComponent.constructor');
     }
 
     ngOnInit() {
         this.subscription = this.service.getGrantedConsents().subscribe(this.update);
+        console.log('UniversalCookieConsentContainerComponent.ngOnInit');
     }
 
     ngOnDestroy() {
@@ -49,6 +50,7 @@ export class UniversalCookieConsentContainerComponent implements OnInit, OnChang
     }
 
     ngOnChanges(changes: SimpleChanges): void {
+        console.log('UniversalCookieConsentContainerComponent.ngOnChanges', changes);
         this.updateOptions();
         this.updateViewState();
     }
