@@ -7,7 +7,7 @@
     "assets": [
         "./styles/*"
     ],
-    "whitelistedNonPeerDependencies": [
+    "allowedNonPeerDependencies": [
         "js-cookie"
     ]
 }

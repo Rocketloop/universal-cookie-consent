@@ -4,7 +4,7 @@
   "description": "A Cookie Consent Library for Angular and the web",
   "scripts": {
     "demo:serve": "ng serve",
-    "lib:build": "ng build --prod universal-cookie-consent && npm run lib:copy-files",
+    "lib:build": "ng build -c production universal-cookie-consent && npm run lib:copy-files",
     "lib:copy-files": "cp {README.md,LICENSE} dist/universal-cookie-consent"
   },
   "private": true,

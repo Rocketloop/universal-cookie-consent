@@ -64,4 +64,13 @@ export class UiSwitchComponent implements ControlValueAccessor {
     setDisabledState(isDisabled: boolean): void {
         this.renderer.setProperty(this.checkboxElementRef.nativeElement, 'disabled', isDisabled);
     }
+
+    /**
+     * Event handler for the change event on the input element.
+     * @param event The change event
+     */
+    onInputChange(event: Event) {
+        event.stopPropagation();
+        this.onChange(this.checkboxElementRef.nativeElement.checked);
+    }
 }

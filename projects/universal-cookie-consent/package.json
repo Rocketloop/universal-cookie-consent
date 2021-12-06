@@ -1,13 +1,19 @@
 {
     "name": "universal-cookie-consent",
     "description": "A Cookie Consent Library for Angular and the web",
-    "version": "1.4.0",
+    "version": "2.0.0",
     "peerDependencies": {
-        "@angular/common": "^8.2.14",
-        "@angular/core": "^8.2.14"
+        "@angular/common": "^13.0.0",
+        "@angular/core": "^13.0.0"
     },
     "dependencies": {
-        "js-cookie": "^2.2.1"
+        "js-cookie": "^2.2.1",
+        "tslib": "^2.3.0"
+    },
+    "exports": {
+        "./styles/style": {
+            "css": "./styles/style.css"
+        }
     },
     "keywords": [
         "angular",
